@@ -1,4 +1,4 @@
-
+import './assets/style/index.scss';
 function App() {
   return (
     <div >
