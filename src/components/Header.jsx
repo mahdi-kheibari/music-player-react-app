@@ -16,7 +16,7 @@ const Header = () => {
                 <Form inline>
                     <InputGroup>
                         <InputGroup.Prepend>
-                        <Button variant="outline-light" className="btn-search"><FaSearch/></Button>
+                        <Button variant="outline-light" className="btn_search"><FaSearch/></Button>
                         </InputGroup.Prepend>
                         <FormControl type="text" placeholder="Search"/>
                     </InputGroup>
