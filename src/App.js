@@ -1,8 +1,8 @@
 import './assets/style/index.scss';
+import Header from './components/Header'
 function App() {
   return (
-    <div >
-    </div>
+    <Header/>
   );
 }
 
