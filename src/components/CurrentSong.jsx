@@ -5,8 +5,8 @@ const CurrentSong = () => {
     return (
         <div className="currentSong">
             <Card className="currentSong_box">
-                <Card.Img className="currentSong_box-img m-auto" src={Hope_cover} />
-                <FaPauseCircle size="3rem" className="currentSong_box-icon" />
+                <Card.Img className="currentSong_box-img mx-2" src={Hope_cover} />
+                <FaPauseCircle size="4rem" className="currentSong_box-icon" />
                 <Card.Body>
                     <Card.Title>Current Song name</Card.Title>
                     <div className="d-flex justify-content-between align-items-center">
@@ -25,7 +25,7 @@ const CurrentSong = () => {
                         <h2 className="font-weight-bold">Current Song name</h2>
                         <h4>Singer</h4>
                     </div>
-                    <div>
+                    <div className="ml-1">
                         <FaStepBackward size="2rem" className="m-2 currentSong_caption-icon" />
                         <FaPauseCircle size="2.5rem" className="m-2 currentSong_caption-icon" />
                         <FaStepForward size="2rem" className="m-2 currentSong_caption-icon" />

@@ -1,14 +1,15 @@
 import { Card } from "react-bootstrap";
-import Hope_cover from './../../assets/img/Hope_cover.jpg';
-const SongListItem = () => {
+const SongListItem = ({name,cover,singer}) => {
     return (
-        <Card className="songItem">
-            <Card.Img className="songItem_img m-auto" src={Hope_cover} />
+        <div className="songItem mx-3">
+        <Card className="songItem_box">
+            <Card.Img className="songItem_box-img mx-1 mt-1" src={cover} />
             <Card.Body className="py-0">
-                <Card.Title className="mb-0">Song name</Card.Title>
-                <Card.Text>Singer</Card.Text>
+                <Card.Title className="mb-0">{name}</Card.Title>
+                <Card.Text>{singer}</Card.Text>
             </Card.Body>
         </Card>
+        </div>
     );
 }
 
