@@ -1,10 +1,10 @@
 import SongListItem from './SongListItem';
 import AllMusicList from './../AllSongsList';
-const SongList = () => {
+const SongList = ({width}) => {
     return (
         <div className="songList mt-2 d-flex">
             {AllMusicList().map((item)=>(
-                <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover}/>
+               <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover}/> 
             ))}
         </div>
 

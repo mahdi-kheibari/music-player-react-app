@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 const SongListItem = ({name,cover,singer}) => {
     return (
-        <div className="songItem mx-3">
+        <div className="songItem mx-3 mb-1">
         <Card className="songItem_box">
             <Card.Img className="songItem_box-img mx-1 mt-1" src={cover} />
             <Card.Body className="py-0">
