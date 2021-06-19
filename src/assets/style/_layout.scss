@@ -15,45 +15,31 @@
     background-size: cover;
     background-position: 0px 50%;
     background-attachment: fixed;
-
     position: relative;
     color: $color-primary !important;
     &_box{
         background-color: $color-secondary !important;
-        width: 17%;
         position: absolute;
         top:40%;
-        margin-left: 5%;
+        margin-left: 3rem;
         box-shadow: 0px 0px 1.5rem rgba(36, 36, 36, 0.6);
         &-img{
             box-shadow: 0px 0px 1rem $color-primary;
+            width: 15.5rem !important;
         }
         &-icon{
             position: absolute;
-            top: 26%;
-            left: 45%;
+            top: 27%;
+            left: 39%;
             cursor: pointer;
-            @media (max-width:1200) {
-                top: 17%;
-                left: 40%;
-            }
-            @media (max-width:992px) {
-                top: 15%;
-                left: 35%;
-            }
-            @media (max-width:768px) {
-                top: 10%;
-                left: 30%;
-            }
-            
         }
     }
     &_caption{
         height: 20vh;
-        min-width: 50%;
+        min-width: calc(100vw - 55rem);
         position: absolute;
         top:40%;
-        left:25%;
+        left:20.8rem;
         &-icon{
             cursor: pointer;
         }
@@ -61,24 +47,32 @@
     &_time{
         position: absolute;
         top:75%;
-        left:23%;
-        width: 75%;
+        left:20.5rem;
+        width: calc(100vw - 21rem);
         font-weight: bold;
     }
     &_slider{
         position: absolute;
         top:96%;
-        left:22%;
-        width: 78%;
+        left:19.6rem;
+        width: calc(100vw - 19.6rem);
     }
 }
 // end currentSong
-// start songItem
-.songItem{
-    width: 15%;
-    color: $color-primary !important;
-    &_img{
-           
+// start songList
+.songList{
+    margin-left:20.8rem ;
+    width:calc(100vw - 20.8rem);
+    overflow-x: scroll;
+    .songItem{
+        color: $color-primary !important;
+        &_box{
+           height: 28vh !important;
+            &-img{
+                width: 8rem !important;
+            }
+        }  
     }
 }
-// end songItem
+
+// end songList

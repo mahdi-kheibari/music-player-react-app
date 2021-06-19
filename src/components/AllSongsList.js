@@ -57,5 +57,13 @@ export default function AllMusicList() {
             cover:"https://songsara.net/wp-content/uploads/2021/05/Jayjen-Secret-to-Happiness-400x400.jpg",
             address:"https://dl.songsara.net/FRE/2021/5/Jayjen%20-%20Secret%20to%20Happiness%20(2020)%20SONGSARA.NET.mp3"
         }
+        ,
+        {
+            name:"Hey",
+            signer:"Various Artists",
+            id:uuidv4(),
+            cover:"https://songsara.net/wp-content/uploads/2021/06/Hello-Hello-400x400.jpg",
+            address:"https://dl.songsara.net/FRE/2021/7/Hello%20Hello%20(Playlist)/01%20Hey.mp3"
+        }
     ]
 };

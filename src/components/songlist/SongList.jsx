@@ -1,8 +1,11 @@
 import SongListItem from './SongListItem';
+import AllMusicList from './../AllSongsList';
 const SongList = () => {
     return (
-        <div className="w-75 ml-auto mt-2 d-flex">
-            <SongListItem />
+        <div className="songList mt-2 d-flex">
+            {AllMusicList().map((item)=>(
+                <SongListItem key={item.id} name={item.name} signer={item.signer} cover={item.cover}/>
+            ))}
         </div>
 
     );
