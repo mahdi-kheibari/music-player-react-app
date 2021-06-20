@@ -11,12 +11,12 @@
 // start current Song
 .currentSong {
     height: 30vh;
-
     &_box {
         top: 40%;
 
         &-img {
             box-shadow: 0px 0px 1rem 0.16rem $color-primary;
+
             width: 15.5rem !important;
         }
 
@@ -36,6 +36,7 @@
         left: 20.8rem;
 
         &-icon {
+
             cursor: pointer;
         }
     }

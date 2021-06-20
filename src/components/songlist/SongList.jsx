@@ -16,8 +16,6 @@ const SongList = ({ width }) => {
                 ))}
             </div>
 
-
-
     );
 }
 
