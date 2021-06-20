@@ -1,4 +1,3 @@
-import AllMusicList from "./AllSongsList";
 import SongListItem from "./songlist/SongListItem";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { Card } from "react-bootstrap";
@@ -6,9 +5,9 @@ import { FaPauseCircle, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { useContext } from "react";
 import { MyContext } from "../context";
 const CurrentSongMobile = () => {
-    const {currentSong} = useContext(MyContext);
+    const {currentSong,songsList} = useContext(MyContext);
     return (
-        <div className="currentSongMobile" style={{background:"linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url("+currentSong[0].cover+")"}}>
+        <div className="currentSongMobile" style={{background:`linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${currentSong[0].cover})`}}>
             <Card className="currentSongMobile_box">
                 <div className="currentSongMobile_box-icon mx-auto">
                     <FaStepBackward size="3rem" className="m-2 currentSong_caption-icon" />
@@ -34,8 +33,8 @@ const CurrentSongMobile = () => {
                 </Card.Body>
             </Card>
             <ScrollContainer className="songList mt-2 d-flex">
-                {AllMusicList().map((item) => (
-                    <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} />
+                {songsList.map((item) => (
+                    <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id}/>
                 ))}
             </ScrollContainer>
         </div>

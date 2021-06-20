@@ -21,9 +21,9 @@ function App() {
     const [width] = useWindowSize();
   return (
     <Context>
-    <Header/>
-    {(width<=778) ? <CurrentSongMobile/>:<CurrentSong/>}
-    {(width<=778) ?null:<SongList/>}
+      <Header/>
+      {(width<=778) ? <CurrentSongMobile/>:<CurrentSong/>}
+      {(width<=778) ?null:<SongList/>}
     </Context>
   );
 }
