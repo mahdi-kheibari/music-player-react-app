@@ -1,12 +1,22 @@
 import SongListItem from './SongListItem';
 import AllMusicList from './../AllSongsList';
-const SongList = ({width}) => {
+import ScrollContainer from "react-indiana-drag-scroll";
+const SongList = ({ width }) => {
     return (
-        <div className="songList mt-2 d-flex">
-            {AllMusicList().map((item)=>(
-               <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover}/> 
-            ))}
-        </div>
+        (width <= 778) ?
+            <ScrollContainer className="songList mt-2 d-flex">
+                {AllMusicList().map((item) => (
+                    <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} />
+                ))}
+            </ScrollContainer>
+            :
+            <div className="songList mt-2 d-flex">
+                {AllMusicList().map((item) => (
+                    <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} />
+                ))}
+            </div>
+
+
 
     );
 }

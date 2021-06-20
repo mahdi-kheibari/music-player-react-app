@@ -94,9 +94,6 @@
     &::-webkit-scrollbar-thumb {
         background-color: $color-tertiary;
         border-radius: 0.2rem;
-        @media (max-width:778px) {
-            background-color: $color-primary;
-        }
     }
 
     &::-webkit-scrollbar-track {
