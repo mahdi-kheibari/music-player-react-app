@@ -35,12 +35,11 @@
 
 .currentSong,.currentSongMobile{
     width: 100%;
-    background:linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(../img/Hope_cover.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0px 50%;
-    background-attachment: fixed;
-    position: relative;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 0px 50% !important;
+    background-attachment: fixed !important;
+    position: relative !important;
     color: $color-primary !important;
     &_box{
         background-color: $color-secondary !important;

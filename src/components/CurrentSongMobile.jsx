@@ -3,21 +3,23 @@ import SongListItem from "./songlist/SongListItem";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { Card } from "react-bootstrap";
 import { FaPauseCircle, FaStepBackward, FaStepForward } from "react-icons/fa";
-import Hope_cover from './../assets/img/Hope_cover.jpg';
+import { useContext } from "react";
+import { MyContext } from "../context";
 const CurrentSongMobile = () => {
+    const {currentSong} = useContext(MyContext);
     return (
-        <div className="currentSongMobile">
+        <div className="currentSongMobile" style={{background:"linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url("+currentSong[0].cover+")"}}>
             <Card className="currentSongMobile_box">
                 <div className="currentSongMobile_box-icon mx-auto">
                     <FaStepBackward size="3rem" className="m-2 currentSong_caption-icon" />
                     <FaPauseCircle size="3.5rem" className="m-2 currentSong_caption-icon" />
                     <FaStepForward size="3rem" className="m-2 currentSong_caption-icon" />
                 </div>
-                <Card.Img className="currentSong_box-img mx-2" src={Hope_cover} />
+                <Card.Img className="currentSong_box-img mx-2" src={currentSong[0].cover} />
                 <Card.Body className="">
-                    <Card.Title className="font-weight-bold">Current Song name</Card.Title>
+                    <Card.Title className="font-weight-bold">{currentSong[0].name}</Card.Title>
                     <div className="d-flex justify-content-between align-items-center">
-                        <Card.Text>Singer</Card.Text>
+                        <Card.Text>{currentSong[0].singer}</Card.Text>
                         <div className="visualizer d-flex align-items-baseline">
                             <div className="visualizer_icon"></div>
                             <div className="visualizer_icon2"></div>

@@ -4,6 +4,7 @@ import Header from './components/Header'
 import CurrentSong from './components/CurrentSong';
 import SongList from './components/songlist/SongList'
 import CurrentSongMobile from './components/CurrentSongMobile';
+import Context from './context'
 function App() {
   function useWindowSize() {
     const [size, setSize] = useState([0, 0]);
@@ -19,11 +20,11 @@ function App() {
   }
     const [width] = useWindowSize();
   return (
-    <>
+    <Context>
     <Header/>
     {(width<=778) ? <CurrentSongMobile/>:<CurrentSong/>}
     {(width<=778) ?null:<SongList/>}
-    </>
+    </Context>
   );
 }
 

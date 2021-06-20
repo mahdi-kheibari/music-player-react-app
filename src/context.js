@@ -15,6 +15,7 @@ const Context = ({children}) => {
         {children}
     </MyContext.Provider>
      );
+     
 }
  
 export default Context;
