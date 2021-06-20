@@ -20,19 +20,33 @@ function AppLayout() {
   }
   const [width] = useWindowSize();
 
-  const { currentSong, songHandler } = useContext(MyContext);
+  const { currentSong,setCurrentSong, songHandler,songsList } = useContext(MyContext);
   const audioRef = useRef();
     useEffect(() => {
       if(songHandler){audioRef.current.play();}
       else{audioRef.current.pause();}
-    }, [songHandler,currentSong])
+    }, [songHandler,currentSong]);
+
+    function goNext() {
+      const currentIndex=songsList.findIndex((item)=>item.id==currentSong[0].id);
+      if(currentIndex == songsList.length-1){
+        setCurrentSong([songsList[0]]);
+      }else{setCurrentSong([songsList[currentIndex+1]]);}
+    }
+    function goBack() {
+      const currentIndex=songsList.findIndex((item)=>item.id==currentSong[0].id);
+      if(currentIndex == 0){
+        setCurrentSong([songsList[songsList.length-1]]);
+      }else{setCurrentSong([songsList[currentIndex-1]]);}
+    }
   return (
     <>
       <Header />
       <audio
         src={currentSong[0].address}
-        ref={audioRef}></audio>
-      {(width <= 778) ? <CurrentSongMobile /> : <CurrentSong />}
+        ref={audioRef}
+        onEnded={goNext}></audio>
+      {(width <= 778) ? <CurrentSongMobile goNext={goNext} goBack={goBack} /> : <CurrentSong goNext={goNext} goBack={goBack} />}
       {(width <= 778) ? null : <SongList />}
     </>
   );

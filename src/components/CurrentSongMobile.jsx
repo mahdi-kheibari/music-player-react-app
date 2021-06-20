@@ -4,19 +4,19 @@ import { Card } from "react-bootstrap";
 import { FaPauseCircle, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { useContext } from "react";
 import { MyContext } from "../context";
-const CurrentSongMobile = () => {
+const CurrentSongMobile = ({goNext,goBack}) => {
     const {currentSong,songsList,songHandler, setSongHandler} = useContext(MyContext);
     return (
         <div className="currentSongMobile" style={{background:`linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${currentSong[0].cover})`}}>
             <Card className="currentSongMobile_box">
                 <div className="currentSongMobile_box-icon mx-auto">
-                    <FaStepBackward size="3rem" className="m-2 currentSong_caption-icon" />
+                    <FaStepBackward onClick={goBack} size="3rem" className="m-2 currentSong_caption-icon" />
                     {(songHandler) ?
                         <FaPauseCircle onClick={() => setSongHandler(!songHandler)} size="3.5rem" className="m-2 currentSong_caption-icon" />
                         :
                         <FaPlay onClick={() => setSongHandler(!songHandler)} size="3.5rem" className="m-2 currentSong_caption-icon" />
                     }
-                    <FaStepForward size="3rem" className="m-2 currentSong_caption-icon" />
+                    <FaStepForward onClick={goNext} size="3rem" className="m-2 currentSong_caption-icon" />
                 </div>
                 <Card.Img className="currentSong_box-img mx-2" src={currentSong[0].cover} />
                 <Card.Body className="">
