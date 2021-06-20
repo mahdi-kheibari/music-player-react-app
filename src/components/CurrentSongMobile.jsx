@@ -1,3 +1,6 @@
+import AllMusicList from "./AllSongsList";
+import SongListItem from "./songlist/SongListItem";
+import ScrollContainer from "react-indiana-drag-scroll";
 import { Card } from "react-bootstrap";
 import { FaPauseCircle, FaStepBackward, FaStepForward } from "react-icons/fa";
 import Hope_cover from './../assets/img/Hope_cover.jpg';
@@ -28,6 +31,11 @@ const CurrentSongMobile = () => {
                     <input type="range" className="currentSongMobile_slider" />
                 </Card.Body>
             </Card>
+            <ScrollContainer className="songList mt-2 d-flex">
+                {AllMusicList().map((item) => (
+                    <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} />
+                ))}
+            </ScrollContainer>
         </div>
     );
 }

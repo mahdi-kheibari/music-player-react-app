@@ -22,7 +22,7 @@ function App() {
     <>
     <Header/>
     {(width<=778) ? <CurrentSongMobile/>:<CurrentSong/>}
-    <SongList width={width}/>
+    {(width<=778) ?null:<SongList/>}
     </>
   );
 }
