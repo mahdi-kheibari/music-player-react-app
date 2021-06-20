@@ -1,14 +1,18 @@
 import { useContext } from "react";
 import { Card } from "react-bootstrap";
-import { FaPauseCircle, FaStepBackward, FaStepForward } from "react-icons/fa";
+import { FaPauseCircle, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { MyContext } from "../context";
 const CurrentSong = () => {
-    const {currentSong} = useContext(MyContext);
+    const { currentSong, songHandler, setSongHandler } = useContext(MyContext);
     return (
-        <div className="currentSong" style={{background:"linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url("+currentSong[0].cover+")"}}>
+        <div className="currentSong" style={{ background: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSong[0].cover + ")" }}>
             <Card className="currentSong_box">
                 <Card.Img className="currentSong_box-img mx-2" src={currentSong[0].cover} />
-                <FaPauseCircle size="4rem" className="currentSong_box-icon" />
+                {(songHandler) ?
+                    <FaPauseCircle onClick={() => setSongHandler(!songHandler)} size="4rem" className="currentSong_box-icon" />
+                    :
+                    <FaPlay onClick={() => setSongHandler(!songHandler)} size="4rem" className="currentSong_box-icon" />
+                }
                 <Card.Body>
                     <Card.Title>{currentSong[0].name}</Card.Title>
                     <div className="d-flex justify-content-between align-items-center">
@@ -29,7 +33,11 @@ const CurrentSong = () => {
                     </div>
                     <div className="ml-1">
                         <FaStepBackward size="2rem" className="m-2 currentSong_caption-icon" />
-                        <FaPauseCircle size="2.5rem" className="m-2 currentSong_caption-icon" />
+                        {(songHandler) ?
+                            <FaPauseCircle onClick={() => setSongHandler(!songHandler)} size="2.5rem" className="m-2 currentSong_caption-icon" />
+                            :
+                            <FaPlay onClick={() => setSongHandler(!songHandler)} size="2.5rem" className="m-2 currentSong_caption-icon" />
+                        }
                         <FaStepForward size="2rem" className="m-2 currentSong_caption-icon" />
                     </div>
                 </div>
@@ -38,7 +46,7 @@ const CurrentSong = () => {
                 <span>0:00</span>
                 <span>3:00</span>
             </div>
-            <input type="range" className="currentSong_slider"/>
+            <input type="range" className="currentSong_slider" />
         </div>
     );
 }
