@@ -25,7 +25,7 @@ function AppLayout() {
     useEffect(() => {
       if(songHandler){audioRef.current.play();}
       else{audioRef.current.pause();}
-    }, [songHandler])
+    }, [songHandler,currentSong])
   return (
     <>
       <Header />
