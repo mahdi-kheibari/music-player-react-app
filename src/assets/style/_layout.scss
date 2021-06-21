@@ -51,6 +51,7 @@
 
     &_slider {
         position: absolute;
+        cursor: pointer;
         top: 96%;
         left: 19.6rem;
         width: calc(100vw - 19.6rem);
@@ -76,6 +77,7 @@
     &_slider {
         width: 100%;
         position: absolute;
+        cursor: pointer;
         left: 0%;
         top: 97.5%;
     }
