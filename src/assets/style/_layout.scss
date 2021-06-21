@@ -11,6 +11,7 @@
 // start current Song
 .currentSong {
     height: 30vh;
+
     &_box {
         top: 40%;
 
@@ -49,10 +50,10 @@
         font-weight: bold;
     }
 
-    &_slider {
+    &_range {
         position: absolute;
         cursor: pointer;
-        top: 96%;
+        top: 95%;
         left: 19.6rem;
         width: calc(100vw - 19.6rem);
     }
@@ -74,12 +75,18 @@
         }
     }
 
-    &_slider {
+    &_range {
         width: 100%;
         position: absolute;
         cursor: pointer;
-        left: 0%;
-        top: 97.5%;
+        left: -0.2%;
+        top: 95.8%;
+        .progress{
+            border-bottom-left-radius: 8.5px !important;
+        }
+        input {
+            border-bottom-left-radius: 8.5px !important;
+        }
     }
 }
 
@@ -111,6 +118,7 @@
     .songItem {
         color: $color-primary !important;
         cursor: pointer;
+
         &_box {
             height: 28vh !important;
 

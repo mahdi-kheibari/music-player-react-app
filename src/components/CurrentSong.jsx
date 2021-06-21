@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Card } from "react-bootstrap";
 import { FaPauseCircle, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { MyContext } from "../context";
-const CurrentSong = ({ goNext, goBack,time,audioRef }) => {
+const CurrentSong = ({ goNext, goBack, time, audioRef }) => {
     const { currentSong, songHandler, setSongHandler, currentTime, fullTime } = useContext(MyContext);
     return (
         <div className="currentSong" style={{ background: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSong[0].cover + ")" }}>
@@ -46,7 +46,12 @@ const CurrentSong = ({ goNext, goBack,time,audioRef }) => {
                 <span>{time(currentTime)}</span>
                 <span>{time(fullTime)}</span>
             </div>
-            <input type="range" onChange={(e)=>audioRef.current.currentTime=e.target.value} min="0" max={fullTime} value={currentTime} className="currentSong_slider" />
+            <div className="currentSong_range">
+                <div className="currentSong_range-slider">
+                    <div className="progress" style={{width:(currentTime/fullTime)*100+"%"}}></div>
+                    <input type="range" onChange={(e) => audioRef.current.currentTime = e.target.value} min="0" max={fullTime} value={currentTime} />
+                </div>
+            </div>
         </div>
     );
 }

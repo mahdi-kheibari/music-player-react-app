@@ -4,10 +4,10 @@ import { Card } from "react-bootstrap";
 import { FaPauseCircle, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { useContext } from "react";
 import { MyContext } from "../context";
-const CurrentSongMobile = ({goNext,goBack,time,audioRef}) => {
-    const {currentSong,songsList,songHandler, setSongHandler,currentTime, fullTime} = useContext(MyContext);
+const CurrentSongMobile = ({ goNext, goBack, time, audioRef }) => {
+    const { currentSong, songsList, songHandler, setSongHandler, currentTime, fullTime } = useContext(MyContext);
     return (
-        <div className="currentSongMobile" style={{background:`linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${currentSong[0].cover})`}}>
+        <div className="currentSongMobile" style={{ background: `linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${currentSong[0].cover})` }}>
             <Card className="currentSongMobile_box">
                 <div className="currentSongMobile_box-icon mx-auto">
                     <FaStepBackward onClick={goBack} size="3rem" className="m-2 currentSong_caption-icon" />
@@ -30,15 +30,20 @@ const CurrentSongMobile = ({goNext,goBack,time,audioRef}) => {
                         </div>
                     </div>
                     <div className="currentSongMobile_time d-flex justify-content-between font-weight-bold">
-                    <span>{time(currentTime)}</span>
-                <span>{time(fullTime)}</span>
+                        <span>{time(currentTime)}</span>
+                        <span>{time(fullTime)}</span>
                     </div>
-                    <input type="range" onChange={(e)=>audioRef.current.currentTime=e.target.value} min="0" max={fullTime} value={currentTime} className="currentSongMobile_slider" />
+                    <div className="currentSongMobile_range">
+                        <div className="currentSongMobile_range-slider">
+                            <div className="progress" style={{ width: (currentTime / fullTime) * 100 + "%" }}></div>
+                            <input type="range" onChange={(e) => audioRef.current.currentTime = e.target.value} min="0" max={fullTime} value={currentTime} />
+                        </div>
+                    </div>
                 </Card.Body>
             </Card>
             <ScrollContainer className="songList mt-2 d-flex">
                 {songsList.map((item) => (
-                    <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id}/>
+                    <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />
                 ))}
             </ScrollContainer>
         </div>
