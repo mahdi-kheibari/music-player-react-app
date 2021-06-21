@@ -53,7 +53,7 @@ function AppLayout() {
         src={currentSong[0].address}
         ref={audioRef}
         onEnded={goNext}></audio>
-      {(width <= 778) ? <CurrentSongMobile audioRef={audioRef} goNext={goNext} goBack={goBack} time={time} /> : <CurrentSong audioRef={audioRef} goNext={goNext} goBack={goBack} time={time}/>}
+      {(width <= 778) ? <CurrentSongMobile audioRef={audioRef} goNext={goNext} goBack={goBack} time={time} width={width}/> : <CurrentSong audioRef={audioRef} goNext={goNext} goBack={goBack} time={time}/>}
       {(width <= 778) ? null : <SongList />}
     </>
   );

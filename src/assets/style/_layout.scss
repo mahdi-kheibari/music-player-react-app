@@ -10,68 +10,66 @@
 // end navbar
 // start current Song
 .currentSong {
-    height: 30vh;
-
+    height: 40vh;
     &_box {
-        top: 40%;
-
+        width: 85%;
+        margin-top: 15vh;
         &-img {
             box-shadow: 0px 0px 1rem 0.16rem $color-primary;
-
-            width: 15.5rem !important;
         }
 
         &-icon {
             position: absolute;
-            top: 27%;
+            top: 29%;
             left: 39%;
             cursor: pointer;
+            @media (min-width:992px) {
+                top: 35%;
+            }
+            @media (min-width:1200px) {
+                top: 31%;
+            }
         }
     }
 
     &_caption {
-        height: 20vh;
-        min-width: calc(100vw - 55rem);
-        position: absolute;
-        top: 40%;
-        left: 20.8rem;
-
+        margin-top: 15vh;
+        .row{
+            height: 20vh !important;
+        }
         &-icon {
-
             cursor: pointer;
         }
     }
 
     &_time {
-        position: absolute;
-        top: 75%;
-        left: 20.5rem;
-        width: calc(100vw - 21rem);
         font-weight: bold;
     }
 
     &_range {
-        position: absolute;
         cursor: pointer;
-        top: 95%;
-        left: 19.6rem;
-        width: calc(100vw - 19.6rem);
     }
 }
 
 // end current Song
 // start current Song Mobile
 .currentSongMobile {
-    height: 68vh;
-
+    height: 92.3vh;
+    
     &_box {
-        top: 10%;
+        width: 90%;
+        margin-top:15vh;
         margin-left: 1rem !important;
-
         &-icon {
             position: absolute;
             top: 26.5%;
-            left: 13%;
+            left: 22%;
+            @media (max-width:566px) {
+                top: 25%;
+            }
+            @media (max-width:650px) {
+                left: 17%;
+            }
         }
     }
 
@@ -80,7 +78,7 @@
         position: absolute;
         cursor: pointer;
         left: -0.2%;
-        top: 95.8%;
+        top: 96.3%;
         .progress{
             border-bottom-left-radius: 8.5px !important;
         }
@@ -93,10 +91,9 @@
 // end current Song Mobile
 // start song List
 .songList {
-    margin-left: 20.8rem;
-    width: calc(100vw - 20.8rem);
     overflow-x: scroll;
-
+    overflow-y: scroll;
+    height: 31vh !important;
     &::-webkit-scrollbar {
         border-radius: 0.3rem;
     }
@@ -110,10 +107,10 @@
         border-radius: 0.2rem;
     }
 
-    @media (max-width:778px) {
-        position: absolute;
-        top: 19vh;
-    }
+    // @media (max-width:778px) {
+    //     position: absolute;
+    //     top: 19vh;
+    // }
 
     .songItem {
         color: $color-primary !important;
@@ -121,9 +118,9 @@
 
         &_box {
             height: 28vh !important;
-
+            width: 8rem !important;
             &-img {
-                width: 8rem !important;
+                width: 93% !important;
             }
         }
     }
