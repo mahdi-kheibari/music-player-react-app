@@ -20,25 +20,32 @@ function AppLayout() {
   }
   const [width] = useWindowSize();
 
-  const { currentSong,setCurrentSong, songHandler,songsList } = useContext(MyContext);
+  const { currentSong, setCurrentSong, songHandler, songsList, setCurrentTime, setFullTime } = useContext(MyContext);
   const audioRef = useRef();
-    useEffect(() => {
-      if(songHandler){audioRef.current.play();}
-      else{audioRef.current.pause();}
-    }, [songHandler,currentSong]);
+  useEffect(() => {
+    if (songHandler) { audioRef.current.play(); }
+    else { audioRef.current.pause(); }
 
-    function goNext() {
-      const currentIndex=songsList.findIndex((item)=>item.id==currentSong[0].id);
-      if(currentIndex == songsList.length-1){
-        setCurrentSong([songsList[0]]);
-      }else{setCurrentSong([songsList[currentIndex+1]]);}
-    }
-    function goBack() {
-      const currentIndex=songsList.findIndex((item)=>item.id==currentSong[0].id);
-      if(currentIndex == 0){
-        setCurrentSong([songsList[songsList.length-1]]);
-      }else{setCurrentSong([songsList[currentIndex-1]]);}
-    }
+    setInterval(() =>{
+      setCurrentTime(audioRef.current.currentTime);
+      setFullTime(audioRef.current.duration);
+    }, 1000);
+ 
+  }, [songHandler, currentSong]);
+  function time(t) {
+    return Math.floor(t/60) +":"+ ("0"+Math.floor(t%60)).slice(-2);
+  }
+  const currentIndex = songsList.findIndex((item) => item.id === currentSong[0].id);
+  function goNext() {
+    if (currentIndex == songsList.length - 1) {
+      setCurrentSong([songsList[0]]);
+    } else { setCurrentSong([songsList[currentIndex + 1]]); }
+  }
+  function goBack() {
+    if (currentIndex == 0) {
+      setCurrentSong([songsList[songsList.length - 1]]);
+    } else { setCurrentSong([songsList[currentIndex - 1]]); }
+  }
   return (
     <>
       <Header />
@@ -46,7 +53,7 @@ function AppLayout() {
         src={currentSong[0].address}
         ref={audioRef}
         onEnded={goNext}></audio>
-      {(width <= 778) ? <CurrentSongMobile goNext={goNext} goBack={goBack} /> : <CurrentSong goNext={goNext} goBack={goBack} />}
+      {(width <= 778) ? <CurrentSongMobile goNext={goNext} goBack={goBack} time={time} /> : <CurrentSong goNext={goNext} goBack={goBack} time={time}/>}
       {(width <= 778) ? null : <SongList />}
     </>
   );

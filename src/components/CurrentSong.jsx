@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { Card } from "react-bootstrap";
 import { FaPauseCircle, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { MyContext } from "../context";
-const CurrentSong = ({goNext,goBack}) => {
-    const { currentSong, songHandler, setSongHandler } = useContext(MyContext);
+const CurrentSong = ({ goNext, goBack,time }) => {
+    const { currentSong, songHandler, setSongHandler, currentTime, fullTime } = useContext(MyContext);
     return (
         <div className="currentSong" style={{ background: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSong[0].cover + ")" }}>
             <Card className="currentSong_box">
@@ -43,10 +43,10 @@ const CurrentSong = ({goNext,goBack}) => {
                 </div>
             </div>
             <div className="currentSong_time d-flex justify-content-between mt-4">
-                <span>0:00</span>
-                <span>3:00</span>
+                <span>{time(currentTime)}</span>
+                <span>{time(fullTime)}</span>
             </div>
-            <input type="range" className="currentSong_slider" />
+            <input type="range" min="0" max={fullTime} value={currentTime} className="currentSong_slider" />
         </div>
     );
 }

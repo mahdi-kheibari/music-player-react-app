@@ -3,7 +3,9 @@ import AllSongsList from './components/AllSongsList'
 export const MyContext=createContext({
     currentSong:"",setCurrentSong:"",
     songsList:"",
-    songHandler:"",setSongHandler:""
+    songHandler:"",setSongHandler:"",
+    currentTime:"",setCurrentTime:"",
+    fullTime:"",setFullTime:""
 });
 
 const Context = ({children}) => {
@@ -15,11 +17,15 @@ const Context = ({children}) => {
         cover:songsList[0].cover,
         address:"https://dl.songsara.net/FRE/2021/2/Mark%20Eliyahu%20-%20Hope%20(2021)%20SONGSARA.NET.mp3"
     }]);
-    const [songHandler, setSongHandler] = useState(false)
+    const [songHandler, setSongHandler] = useState(false);
+    const [currentTime, setCurrentTime] = useState();
+    const [fullTime, setFullTime] = useState();
     return ( 
     <MyContext.Provider value={{
         currentSong,setCurrentSong,
-        songsList,songHandler,setSongHandler
+        songsList,songHandler,setSongHandler,
+        currentTime,setCurrentTime,
+        fullTime,setFullTime
         }}>
         {children}
     </MyContext.Provider>
