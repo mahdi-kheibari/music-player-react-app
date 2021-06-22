@@ -19,21 +19,47 @@ function AppLayout() {
     return size;
   }
   const [width] = useWindowSize();
+  const { currentSong, setCurrentSong, songHandler, songsList,setSongsList, setCurrentTime, setFullTime, favList, setFavList, } = useContext(MyContext);
+  
+  // start set to fav
+  function setToFav() {
+    let newList=songsList.map((item)=>{
+      if(item.id == currentSong[0].id){
+        return {
+          ...item,
+          favorite:!item.favorite
+        }
+      }else{
+          return{
+            ...item
+          }
+      }
+    });
+    setSongsList(newList);
+    currentSong[0].favorite = !currentSong[0].favorite;
+  }
+  // end set to fav
+  useEffect(() => {
+    const favorite=songsList.filter((item)=>item.favorite===true);
+    setFavList(favorite);
+    console.log(favList);
+    console.log(favorite);
+  }, [songsList])
 
-  const { currentSong, setCurrentSong, songHandler, songsList, setCurrentTime, setFullTime } = useContext(MyContext);
   const audioRef = useRef();
+
   useEffect(() => {
     if (songHandler) { audioRef.current.play(); }
     else { audioRef.current.pause(); }
 
-    setInterval(() =>{
+    setInterval(() => {
       setCurrentTime(audioRef.current.currentTime);
       setFullTime(audioRef.current.duration);
     }, 1000);
- 
   }, [songHandler, currentSong]);
+
   function time(t) {
-    return Math.floor(t/60) +":"+ ("0"+Math.floor(t%60)).slice(-2);
+    return Math.floor(t / 60) + ":" + ("0" + Math.floor(t % 60)).slice(-2);
   }
   const currentIndex = songsList.findIndex((item) => item.id === currentSong[0].id);
   function goNext() {
@@ -53,7 +79,13 @@ function AppLayout() {
         src={currentSong[0].address}
         ref={audioRef}
         onEnded={goNext}></audio>
-      {(width <= 778) ? <CurrentSongMobile audioRef={audioRef} goNext={goNext} goBack={goBack} time={time} width={width}/> : <CurrentSong audioRef={audioRef} goNext={goNext} goBack={goBack} time={time}/>}
+      {(width <= 778) ? 
+      <CurrentSongMobile audioRef={audioRef} goNext={goNext} goBack={goBack} time={time} 
+      width={width} setToFav={setToFav}/> 
+      : 
+      <CurrentSong audioRef={audioRef} goNext={goNext} goBack={goBack}
+      time={time} setToFav={setToFav}/>
+      }
       {(width <= 778) ? null : <SongList />}
     </>
   );

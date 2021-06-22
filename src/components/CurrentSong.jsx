@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { Card } from "react-bootstrap";
-import { FaPauseCircle, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
+import { FaHeart, FaPauseCircle, FaPlay, FaRegHeart, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { MyContext } from "../context";
-const CurrentSong = ({ goNext, goBack, time, audioRef }) => {
-    const { currentSong, songHandler, setSongHandler, currentTime, fullTime } = useContext(MyContext);
+const CurrentSong = ({ goNext, goBack, time, audioRef,setToFav }) => {
+    const { currentSong, songHandler, setSongHandler, currentTime, fullTime} = useContext(MyContext);
+    
     return (
         <div className="currentSong" style={{ background: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSong[0].cover + ")" }}>
             <div className="row no-gutters">
@@ -37,14 +38,21 @@ const CurrentSong = ({ goNext, goBack, time, audioRef }) => {
                                         <h2 className="font-weight-bold">{currentSong[0].name}</h2>
                                         <h4>{currentSong[0].singer}</h4>
                                     </div>
-                                    <div className="col-5">
-                                        <FaStepBackward onClick={goBack} size="2rem" className="m-2 currentSong_caption-icon" />
-                                        {(songHandler) ?
-                                            <FaPauseCircle onClick={() => setSongHandler(!songHandler)} size="2.5rem" className="m-2 currentSong_caption-icon" />
+                                    <div className="col-5 d-flex flex-column align-items-end mr-xl-auto">
+                                        <div>
+                                            <FaStepBackward onClick={goBack} size="2rem" className="m-2 currentSong_caption-icon" />
+                                            {(songHandler) ?
+                                                <FaPauseCircle onClick={() => setSongHandler(!songHandler)} size="2.5rem" className="m-2 currentSong_caption-icon" />
+                                                :
+                                                <FaPlay onClick={() => setSongHandler(!songHandler)} size="2.5rem" className="m-2 currentSong_caption-icon" />
+                                            }
+                                            <FaStepForward onClick={goNext} size="2rem" className="ml-2 currentSong_caption-icon" />
+                                        </div>
+                                        {(currentSong[0].favorite) ?
+                                            <FaHeart onClick={setToFav} size="2rem" className="currentSong_caption-icon"/>
                                             :
-                                            <FaPlay onClick={() => setSongHandler(!songHandler)} size="2.5rem" className="m-2 currentSong_caption-icon" />
+                                            <FaRegHeart onClick={setToFav} size="2rem" className="currentSong_caption-icon"/>
                                         }
-                                        <FaStepForward onClick={goNext} size="2rem" className="ml-2 currentSong_caption-icon" />
                                     </div>
                                 </div>
                             </div>
