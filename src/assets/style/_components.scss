@@ -97,11 +97,10 @@
 .songListMobile{
     margin-top: 29vh;
 }
-// .currentSong_caption{
-//     &-icons{
-//         @media (min-width:1200px) {
-//             margin-right:4rem ;
-//         }
-        
-//     }
-// }
+
+.fav_message{
+    color:$color-tertiary;
+}
+.emoji{
+    color: $color-primary !important;
+}

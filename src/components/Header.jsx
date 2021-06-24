@@ -2,6 +2,7 @@ import { Button, InputGroup } from 'react-bootstrap';
 import { Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { RiNeteaseCloudMusicLine } from 'react-icons/ri';
 import { FaSearch } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <Navbar variant="dark" expand="md">
@@ -9,9 +10,8 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="">All songs</Nav.Link>
-                    <Nav.Link href="">Top songs</Nav.Link>
-                    <Nav.Link href="">Favorite songs</Nav.Link>
+                    <NavLink to="/" exact activeClassName="active" className="nav-link">All songs</NavLink>
+                    <NavLink to="/fav" className="nav-link">Favorite songs</NavLink>
                 </Nav>
                 <Form inline>
                     <InputGroup>
