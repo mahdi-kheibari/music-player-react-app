@@ -7,7 +7,7 @@ export default function AllMusicList() {
             id:uuidv4(),
             cover:"https://songsara.net/wp-content/uploads/2021/02/Mark-Eliyahu-Hope-400x400.jpg",
             address:"https://dl.songsara.net/FRE/2021/2/Mark%20Eliyahu%20-%20Hope%20(2021)%20SONGSARA.NET.mp3",
-            favorite:true
+            favorite:false
         }
         ,
         {
