@@ -9,7 +9,6 @@ export const MyContext = createContext({
     favList: "", setFavList: "",
     currentSongFav: "", setCurrentSongFav: "",
     songHandlerFav:"", setSongHandlerFav:""
-
 });
 
 const Context = ({ children }) => {

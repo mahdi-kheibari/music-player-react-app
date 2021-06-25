@@ -6,12 +6,13 @@ import SongListItem from "./songlist/SongListItem";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { withRouter } from "react-router";
 const CurrentSongFav = ({ time, setToFav, width,audioRef }) => {
+
     const { currentSongFav, setCurrentSongFav, currentTime, setCurrentTime, fullTime, setFullTime, favList,songHandlerFav, setSongHandlerFav} = useContext(MyContext)
     
     if(!audioRef.current.paused){
         audioRef.current.pause();
     }else{}
-    
+
     const audioRefFav = useRef();
     const currentIndexFav = favList.findIndex((item) => item.id === currentSongFav[0].id);
     function goNextFav() {

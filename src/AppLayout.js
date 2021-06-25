@@ -21,6 +21,7 @@ function AppLayout() {
     return size;
   }
   const [width] = useWindowSize();
+
   const { currentSong,setCurrentSong, currentSongFav, songsList, setSongsList, favList, setFavList, setCurrentSongFav } = useContext(MyContext);
 
   // start set to fav
@@ -71,7 +72,6 @@ function AppLayout() {
       setCurrentSong([songsList[0]]);
     } else { setCurrentSong([songsList[currentIndex + 1]]); }
   }
-
   return (
     <>
       <Header />
