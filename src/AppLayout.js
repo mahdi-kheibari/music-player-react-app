@@ -42,6 +42,31 @@ function AppLayout() {
     currentSong[0].favorite = !currentSong[0].favorite;
   }
   // end set to fav
+
+  function removeFromFav() {
+    let newFavorite = songsList.map((item) => {
+      if (item.id === currentSongFav[0].id) {
+        return {
+          ...item,
+          favorite: !item.favorite
+        }
+      } else {
+        return {
+          ...item
+        }
+      }
+    });
+    setSongsList(newFavorite);
+    setCurrentSong([{
+      name: songsList[0].name,
+      singer: songsList[0].singer,
+      id: songsList[0].id,
+      cover: songsList[0].cover,
+      address: songsList[0].address,
+      favorite: songsList[0].favorite
+    }])
+
+  }
   useEffect(() => {
     const favorite = songsList.filter((item) => item.favorite === true);
     setFavList(favorite);
@@ -72,7 +97,7 @@ function AppLayout() {
       setCurrentSong([songsList[0]]);
     } else { setCurrentSong([songsList[currentIndex + 1]]); }
   }
-  
+
   return (
     <>
       <Header />
@@ -88,12 +113,12 @@ function AppLayout() {
             width={width} audioRef={audioRef} goNext={goNext}
           >
           </CurrentSong>
-          
+
         </Route>
         <Route path="/fav" exact>
           {(currentSongFav[0] !== undefined) ?
             <CurrentSongFav time={time} setToFav={setToFav}
-              width={width} audioRef={audioRef}
+              width={width} removeFromFav={removeFromFav}
             />
             :
             <h1 className="fav_message text-center mt-3">

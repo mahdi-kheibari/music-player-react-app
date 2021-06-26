@@ -5,9 +5,9 @@ import { MyContext } from "../context";
 import SongListItem from "./songlist/SongListItem";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { withRouter } from "react-router";
-const CurrentSongFav = ({ time, setToFav, width,audioRef }) => {
+const CurrentSongFav = ({ time, setToFav, width,removeFromFav }) => {
 
-    const { currentSongFav, setCurrentSongFav, currentTime, setCurrentTime, fullTime, setFullTime, favList,songHandlerFav, setSongHandlerFav} = useContext(MyContext)
+    const { currentSongFav, setCurrentSongFav, currentTime, setCurrentTime, fullTime, setFullTime, favList, songHandlerFav, setSongHandlerFav } = useContext(MyContext)
     const audioRefFav = useRef();
     const currentIndexFav = favList.findIndex((item) => item.id === currentSongFav[0].id);
     function goNextFav() {
@@ -21,15 +21,15 @@ const CurrentSongFav = ({ time, setToFav, width,audioRef }) => {
         } else { setCurrentSongFav([favList[currentIndexFav - 1]]); }
     }
     useEffect(() => {
-            if (songHandlerFav) { audioRefFav.current.play(); }
-            else { audioRefFav.current.pause(); }
-            var timeFav=setInterval(() => {
-                setCurrentTime(audioRefFav.current.currentTime);
-                setFullTime(audioRefFav.current.duration);
-            }, 1000);
-            return function cleanup(){
-                clearInterval(timeFav);
-              }
+        if (songHandlerFav) { audioRefFav.current.play(); }
+        else { audioRefFav.current.pause(); }
+        var timeFav = setInterval(() => {
+            setCurrentTime(audioRefFav.current.currentTime);
+            setFullTime(audioRefFav.current.duration);
+        }, 1000);
+        return function cleanup() {
+            clearInterval(timeFav);
+        }
     }, [songHandlerFav, currentSongFav])// eslint-disable-line react-hooks/exhaustive-deps
     return (
         <>
@@ -82,11 +82,7 @@ const CurrentSongFav = ({ time, setToFav, width,audioRef }) => {
                                                     <FaStepForward onClick={goNextFav} size="2rem" className="ml-2 currentSong_caption-icon" />
 
                                                 </div>
-                                                {(currentSongFav[0].favorite) ?
-                                                    <FaHeart onClick={setToFav} size="2rem" className="currentSong_caption-icon" />
-                                                    :
-                                                    <FaRegHeart onClick={setToFav} size="2rem" className="currentSong_caption-icon" />
-                                                }
+                                                    <FaHeart onClick={removeFromFav} size="2rem" className="currentSong_caption-icon" />
                                             </div>
                                         </div>
                                     </div>
