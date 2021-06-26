@@ -22,7 +22,7 @@ function AppLayout() {
   }
   const [width] = useWindowSize();
 
-  const { currentSong,setCurrentSong, currentSongFav, songsList, setSongsList, favList, setFavList, setCurrentSongFav } = useContext(MyContext);
+  const { currentSong, setCurrentSong, currentSongFav, songsList, setSongsList, favList, setFavList, setCurrentSongFav } = useContext(MyContext);
 
   // start set to fav
   function setToFav() {
@@ -67,11 +67,12 @@ function AppLayout() {
 
   const audioRef = useRef();
   function goNext() {
-    const currentIndex = songsList.findIndex((item) => item.id === currentSong[0].id); 
+    const currentIndex = songsList.findIndex((item) => item.id === currentSong[0].id);
     if (currentIndex === songsList.length - 1) {
       setCurrentSong([songsList[0]]);
     } else { setCurrentSong([songsList[currentIndex + 1]]); }
   }
+  
   return (
     <>
       <Header />
@@ -85,10 +86,11 @@ function AppLayout() {
           </audio>
           <CurrentSong time={time} setToFav={setToFav}
             width={width} audioRef={audioRef} goNext={goNext}
-          />
+          >
+          </CurrentSong>
+          
         </Route>
         <Route path="/fav" exact>
-
           {(currentSongFav[0] !== undefined) ?
             <CurrentSongFav time={time} setToFav={setToFav}
               width={width} audioRef={audioRef}

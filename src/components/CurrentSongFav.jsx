@@ -8,11 +8,6 @@ import { withRouter } from "react-router";
 const CurrentSongFav = ({ time, setToFav, width,audioRef }) => {
 
     const { currentSongFav, setCurrentSongFav, currentTime, setCurrentTime, fullTime, setFullTime, favList,songHandlerFav, setSongHandlerFav} = useContext(MyContext)
-    
-    if(!audioRef.current.paused){
-        audioRef.current.pause();
-    }else{}
-
     const audioRefFav = useRef();
     const currentIndexFav = favList.findIndex((item) => item.id === currentSongFav[0].id);
     function goNextFav() {
@@ -28,10 +23,13 @@ const CurrentSongFav = ({ time, setToFav, width,audioRef }) => {
     useEffect(() => {
             if (songHandlerFav) { audioRefFav.current.play(); }
             else { audioRefFav.current.pause(); }
-            setInterval(() => {
+            var timeFav=setInterval(() => {
                 setCurrentTime(audioRefFav.current.currentTime);
                 setFullTime(audioRefFav.current.duration);
             }, 1000);
+            return function cleanup(){
+                clearInterval(timeFav);
+              }
     }, [songHandlerFav, currentSongFav])// eslint-disable-line react-hooks/exhaustive-deps
     return (
         <>

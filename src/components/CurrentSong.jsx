@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { FaHeart, FaPauseCircle, FaPlay, FaRegHeart, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { MyContext } from "../context";
@@ -8,14 +8,19 @@ import { withRouter } from "react-router";
 
 const CurrentSong = ({ time, setToFav, width,audioRef,goNext }) => {
     const { currentSong, setCurrentSong, songHandler, setSongHandler, currentTime, setCurrentTime, fullTime, setFullTime, songsList } = useContext(MyContext);
+
     useEffect(() => {
-            if (songHandler) { audioRef.current.play(); }
-            else { audioRef.current.pause(); }
-                setInterval(() => {
-                    setCurrentTime(audioRef.current.currentTime);
-                    setFullTime(audioRef.current.duration);
-                }, 1000)
-    }, [songHandler, currentSong]);// eslint-disable-line react-hooks/exhaustive-deps
+        if (songHandler) { audioRef.current.play(); }
+        else { audioRef.current.pause(); }
+        var time = setInterval(() => {
+          setCurrentTime(audioRef.current.currentTime);
+          setFullTime(audioRef.current.duration);
+        }, 1000)
+        return function cleanup(){
+          clearInterval(time);
+        }
+      }, [songHandler, currentSong]);// eslint-disable-line react-hooks/exhaustive-deps
+    
     const currentIndex = songsList.findIndex((item) => item.id === currentSong[0].id); 
     function goBack() {
         if (currentIndex === 0) {
