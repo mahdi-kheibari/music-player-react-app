@@ -7,6 +7,7 @@ import { MyContext } from './context'
 import { Route, Switch, withRouter } from 'react-router';
 import CurrentSongFav from './components/CurrentSongFav';
 import { FaSadTear } from 'react-icons/fa';
+import P404 from './assets/img/404.png'
 function AppLayout() {
   function useWindowSize() {
     const [size, setSize] = useState([0]);
@@ -126,6 +127,11 @@ function AppLayout() {
               <FaSadTear size="2rem" className="emoji" />
             </h1>
           }
+        </Route>
+        <Route>
+          <div className="text-center mt-3">
+          <img src={P404} alt="page not found" className="img-fluid"/>
+          </div>
         </Route>
       </Switch>
       {(width <= 778) ? null : <SongList />}
