@@ -20,7 +20,7 @@ const SongListItem = ({ name, cover, singer, id }) => {
             <Route path="/" exact>
                 <div className="songItem mx-3 mb-1" onClick={updateCurrent}>
                     <Card className="songItem_box">
-                        <Card.Img className="songItem_box-img mx-auto mt-1" src={cover} />
+                        <Card.Img className="songItem_box-img w-auto m-2" src={cover} />
                         <Card.Body className="p-1 text-center">
                             <Card.Title className="mb-0">{name}</Card.Title>
                             <Card.Text>{singer}</Card.Text>
@@ -31,7 +31,7 @@ const SongListItem = ({ name, cover, singer, id }) => {
             <Route path="/fav">
                 <div className="songItem mx-3 mb-1" onClick={updateCurrentFav}>
                     <Card className="songItem_box">
-                        <Card.Img className="songItem_box-img mx-auto mt-1" src={cover} />
+                        <Card.Img className="songItem_box-img w-auto m-2" src={cover} />
                         <Card.Body className="p-1 text-center">
                             <Card.Title className="mb-0">{name}</Card.Title>
                             <Card.Text>{singer}</Card.Text>

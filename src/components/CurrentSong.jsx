@@ -3,25 +3,26 @@ import { Card } from "react-bootstrap";
 import { FaHeart, FaPauseCircle, FaPlay, FaRegHeart, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { MyContext } from "../context";
 import SongListItem from "./songlist/SongListItem";
-import ScrollContainer from "react-indiana-drag-scroll";
 import { withRouter } from "react-router";
+import { SwiperSlide } from "swiper/react";
+import DraggableScroll from "./DraggableScroll";
 
-const CurrentSong = ({ time, setToFav, width,audioRef,goNext }) => {
+const CurrentSong = ({ time, setToFav, width, audioRef, goNext }) => {
     const { currentSong, setCurrentSong, songHandler, setSongHandler, currentTime, setCurrentTime, fullTime, setFullTime, songsList } = useContext(MyContext);
 
     useEffect(() => {
         if (songHandler) { audioRef.current.play(); }
         else { audioRef.current.pause(); }
         var time = setInterval(() => {
-          setCurrentTime(audioRef.current.currentTime);
-          setFullTime(audioRef.current.duration);
+            setCurrentTime(audioRef.current.currentTime);
+            setFullTime(audioRef.current.duration);
         }, 1000)
-        return function cleanup(){
-          clearInterval(time);
+        return function cleanup() {
+            clearInterval(time);
         }
-      }, [songHandler, currentSong]);// eslint-disable-line react-hooks/exhaustive-deps
-    
-    const currentIndex = songsList.findIndex((item) => item.id === currentSong[0].id); 
+    }, [songHandler, currentSong]);// eslint-disable-line react-hooks/exhaustive-deps
+
+    const currentIndex = songsList.findIndex((item) => item.id === currentSong[0].id);
     function goBack() {
         if (currentIndex === 0) {
             setCurrentSong([songsList[songsList.length - 1]]);
@@ -147,11 +148,13 @@ const CurrentSong = ({ time, setToFav, width,audioRef,goNext }) => {
                                 </Card>
                             </div>
                             <div className="songListMobile col-5 ml-3">
-                                <ScrollContainer className="songList mt-2 d-flex">
+                                <DraggableScroll className="songList mt-2 d-flex">
                                     {songsList.map((item) => (
-                                        <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />
+                                        <SwiperSlide>
+                                            <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />
+                                        </SwiperSlide>
                                     ))}
-                                </ScrollContainer>
+                                </DraggableScroll>
                             </div>
                         </div>
                     </div>

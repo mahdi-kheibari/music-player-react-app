@@ -3,9 +3,11 @@ import { Card } from "react-bootstrap";
 import { FaHeart, FaPauseCircle, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { MyContext } from "../context";
 import SongListItem from "./songlist/SongListItem";
-import ScrollContainer from "react-indiana-drag-scroll";
 import { withRouter } from "react-router";
-const CurrentSongFav = ({ time, width,removeFromFav }) => {
+import { SwiperSlide } from "swiper/react";
+import DraggableScroll from "./DraggableScroll";
+
+const CurrentSongFav = ({ time, width, removeFromFav }) => {
 
     const { currentSongFav, setCurrentSongFav, currentTime, setCurrentTime, fullTime, setFullTime, favList, songHandlerFav, setSongHandlerFav } = useContext(MyContext)
     const audioRefFav = useRef();
@@ -82,7 +84,7 @@ const CurrentSongFav = ({ time, width,removeFromFav }) => {
                                                     <FaStepForward onClick={goNextFav} size="2rem" className="ml-2 currentSong_caption-icon" />
 
                                                 </div>
-                                                    <FaHeart onClick={removeFromFav} size="2rem" className="currentSong_caption-icon" />
+                                                <FaHeart onClick={removeFromFav} size="2rem" className="currentSong_caption-icon" />
                                             </div>
                                         </div>
                                     </div>
@@ -124,7 +126,7 @@ const CurrentSongFav = ({ time, width,removeFromFav }) => {
                                     <Card.Body className="">
                                         <div className="d-flex justify-content-between">
                                             <Card.Title className="font-weight-bold">{currentSongFav[0].name}</Card.Title>
-                                                <FaHeart onClick={removeFromFav} size="2rem" className="currentSong_caption-icon" />
+                                            <FaHeart onClick={removeFromFav} size="2rem" className="currentSong_caption-icon" />
                                         </div>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <Card.Text>{currentSongFav[0].singer}</Card.Text>
@@ -148,11 +150,13 @@ const CurrentSongFav = ({ time, width,removeFromFav }) => {
                                 </Card>
                             </div>
                             <div className="songListMobile col-5 ml-3">
-                                <ScrollContainer className="songList mt-2 d-flex">
+                                <DraggableScroll>
                                     {favList.map((item) => (
-                                        <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />
+                                        <SwiperSlide>
+                                            <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />
+                                        </SwiperSlide>
                                     ))}
-                                </ScrollContainer>
+                                </DraggableScroll>
                             </div>
                         </div>
                     </div>
