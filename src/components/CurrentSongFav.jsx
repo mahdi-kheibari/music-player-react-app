@@ -33,6 +33,15 @@ const CurrentSongFav = ({ time, width, removeFromFav }) => {
             clearInterval(timeFav);
         }
     }, [songHandlerFav, currentSongFav])// eslint-disable-line react-hooks/exhaustive-deps
+
+    const imgRef = useRef();
+    const imgBoxRef = useRef();
+    function setHeight() {
+        const imgwidth = imgRef.current.width;
+        imgBoxRef.current.height = imgwidth;
+        console.log(imgBoxRef.current.height);
+        console.log(imgRef.current.height);
+    }
     return (
         <>
             <audio
@@ -111,18 +120,21 @@ const CurrentSongFav = ({ time, width, removeFromFav }) => {
                 <div>
                     <div className="currentSongMobile" style={{ background: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSongFav[0].cover + ")" }}>
                         <div className="row no-gutters">
-                            <div className="col-6 p-0 d-flex justify-content-end">
+                            <div className="col-11 col-sm-6 p-0 d-flex justify-content-end">
                                 <Card className="currentSongMobile_box">
-                                    <div className="currentSongMobile_box-icon mx-auto">
-                                        <FaStepBackward onClick={goBackFav} size={(width <= 580) ? "2rem" : "3rem"} className="m-2 currentSong_caption-icon" />
-                                        {(songHandlerFav) ?
-                                            <FaPauseCircle onClick={() => setSongHandlerFav(!songHandlerFav)} size={(width <= 600) ? "2.5rem" : "3.5rem"} className="m-2 currentSong_caption-icon" />
-                                            :
-                                            <FaPlay onClick={() => setSongHandlerFav(!songHandlerFav)} size={(width <= 580) ? "2.5rem" : "3.5rem"} className="m-2 currentSong_caption-icon" />
-                                        }
-                                        <FaStepForward onClick={goNextFav} size={(width <= 580) ? "2rem" : "3rem"} className="m-2 currentSong_caption-icon" />
+                                    <div className="currentSongMobile_box-img mx-auto mt-3" ref={imgBoxRef} onLoad={setHeight}>
+                                    <Card.Img className="currentSongMobile_box-img-shadow mx-auto" src={currentSongFav[0].cover} ref={imgRef}/>
+                                        <div className="currentSongMobile_box-img-icon mx-auto">
+                                            <FaStepBackward onClick={goBackFav} size={(width <= 580) ? "2rem" : "3rem"} className="m-2 currentSong_caption-icon" />
+                                            {(songHandlerFav) ?
+                                                <FaPauseCircle onClick={() => setSongHandlerFav(!songHandlerFav)} size={(width <= 600) ? "2.5rem" : "3.5rem"} className="m-2 currentSong_caption-icon" />
+                                                :
+                                                <FaPlay onClick={() => setSongHandlerFav(!songHandlerFav)} size={(width <= 580) ? "2.5rem" : "3.5rem"} className="m-2 currentSong_caption-icon" />
+                                            }
+                                            <FaStepForward onClick={goNextFav} size={(width <= 580) ? "2rem" : "3rem"} className="m-2 currentSong_caption-icon" />
+                                        </div>
                                     </div>
-                                    <Card.Img className="currentSong_box-img mx-auto" src={currentSongFav[0].cover} />
+
                                     <Card.Body className="">
                                         <div className="d-flex justify-content-between">
                                             <Card.Title className="font-weight-bold">{currentSongFav[0].name}</Card.Title>
@@ -149,8 +161,8 @@ const CurrentSongFav = ({ time, width, removeFromFav }) => {
                                     </Card.Body>
                                 </Card>
                             </div>
-                            <div className="songListMobile col-5 ml-3">
-                                <DraggableScroll>
+                            <div className="songListMobile col-11 col-sm-5 ml-3">
+                                <DraggableScroll width={width}>
                                     {favList.map((item) => (
                                         <SwiperSlide>
                                             <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />

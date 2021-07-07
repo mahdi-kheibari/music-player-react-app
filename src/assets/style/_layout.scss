@@ -16,6 +16,7 @@
         margin-top: 15vh;
         &-img {
             box-shadow: 0px 0px 1rem 0.16rem $color-primary;
+            position: relative;
         }
 
         &-icon {
@@ -57,20 +58,28 @@
     min-height: 92.3vh;
     
     &_box {
-        width: 90%;
+        width: 85%;
         margin-top:15vh;
-        margin-left: 1rem !important;
-        &-icon {
-            position: absolute;
-            top: 26.5%;
-            left: 22%;
-            @media (max-width:566px) {
-                top: 25%;
-            }
-            @media (max-width:650px) {
-                left: 17%;
-            }
+        @media (max-width:576px) {
+            margin-top:8vh;
+            width: 90%;
         }
+        margin-left: 1rem !important;
+        &-img{
+            width: 90%;
+            position: relative;
+            overflow-y: hidden;
+            &-icon { 
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items:flex-start;
+                justify-content: center;
+                z-index: 2;
+                top: 40%;
+            }
+        }   
     }
 
     &_range {

@@ -95,7 +95,10 @@
 }
 
 .songListMobile{
-    margin-top: 29vh;
+    margin-top: 2.5rem;
+    @media (min-width:576px) {
+        margin-top: 29vh !important;
+    }
 }
 
 .fav_message{
@@ -103,4 +106,17 @@
 }
 .emoji{
     color: $color-primary !important;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    color: $color-primary !important;
+}
+.swiper-button-next:after{
+    margin-left:1.5rem;
+}
+.swiper-button-prev:after{
+    margin-right:1.5rem;
+    @media (min-width:576px) {
+        display: none;
+    }
 }

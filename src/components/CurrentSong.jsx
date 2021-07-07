@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Card } from "react-bootstrap";
 import { FaHeart, FaPauseCircle, FaPlay, FaRegHeart, FaStepBackward, FaStepForward } from "react-icons/fa";
 import { MyContext } from "../context";
@@ -28,6 +28,19 @@ const CurrentSong = ({ time, setToFav, width, audioRef, goNext }) => {
             setCurrentSong([songsList[songsList.length - 1]]);
         } else { setCurrentSong([songsList[currentIndex - 1]]); }
     }
+
+
+    const imgRef = useRef();
+    const imgBoxRef = useRef();
+    function setHeight() {
+        const imgwidth = imgRef.current.width;
+        imgBoxRef.current.height = imgwidth;
+        console.log(imgBoxRef.current.height);
+        console.log(imgRef.current.height);
+    }
+
+
+
     return (
         <>
             {(width > 778) ?
@@ -105,18 +118,21 @@ const CurrentSong = ({ time, setToFav, width, audioRef, goNext }) => {
                 <div>
                     <div className="currentSongMobile" style={{ background: `linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(${currentSong[0].cover})` }}>
                         <div className="row no-gutters">
-                            <div className="col-6 p-0 d-flex justify-content-end">
+                            <div className="col-11 col-sm-6 p-0 d-flex justify-content-center ml-1">
                                 <Card className="currentSongMobile_box">
-                                    <div className="currentSongMobile_box-icon mx-auto">
-                                        <FaStepBackward onClick={goBack} size={(width <= 580) ? "2rem" : "3rem"} className="m-2 currentSong_caption-icon" />
-                                        {(songHandler) ?
-                                            <FaPauseCircle onClick={() => setSongHandler(!songHandler)} size={(width <= 600) ? "2.5rem" : "3.5rem"} className="m-2 currentSong_caption-icon" />
-                                            :
-                                            <FaPlay onClick={() => setSongHandler(!songHandler)} size={(width <= 580) ? "2.5rem" : "3.5rem"} className="m-2 currentSong_caption-icon" />
-                                        }
-                                        <FaStepForward onClick={goNext} size={(width <= 580) ? "2rem" : "3rem"} className="m-2 currentSong_caption-icon" />
+                                    <div className="currentSongMobile_box-img mx-auto mt-3" ref={imgBoxRef} onLoad={setHeight}>
+                                        <Card.Img className="currentSongMobile_box-img-shadow mx-auto" src={currentSong[0].cover} ref={imgRef} />
+                                        <div className="currentSongMobile_box-img-icon">
+                                            <FaStepBackward onClick={goBack} size={(width <= 580) ? "2rem" : "3rem"} className="m-2 currentSong_caption-icon" />
+                                            {(songHandler) ?
+                                                <FaPauseCircle onClick={() => setSongHandler(!songHandler)} size={(width <= 600) ? "2.5rem" : "3.5rem"} className="m-2 currentSong_caption-icon" />
+                                                :
+                                                <FaPlay onClick={() => setSongHandler(!songHandler)} size={(width <= 580) ? "2.5rem" : "3.5rem"} className="m-2 currentSong_caption-icon" />
+                                            }
+                                            <FaStepForward onClick={goNext} size={(width <= 580) ? "2rem" : "3rem"} className="m-2 currentSong_caption-icon" />
+                                        </div>
                                     </div>
-                                    <Card.Img className="currentSong_box-img mx-auto" src={currentSong[0].cover} />
+
                                     <Card.Body className="">
                                         <div className="d-flex justify-content-between">
                                             <Card.Title className="font-weight-bold">{currentSong[0].name}</Card.Title>
@@ -147,8 +163,8 @@ const CurrentSong = ({ time, setToFav, width, audioRef, goNext }) => {
                                     </Card.Body>
                                 </Card>
                             </div>
-                            <div className="songListMobile col-5 ml-3">
-                                <DraggableScroll className="songList mt-2 d-flex">
+                            <div className="songListMobile col-sm-5 col-11 mx-auto">
+                                <DraggableScroll width={width}>
                                     {songsList.map((item) => (
                                         <SwiperSlide>
                                             <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />
