@@ -1,12 +1,28 @@
 import { v4 as uuidv4 } from 'uuid';
+import Hope_C from './../assets/musics/Hope.jpg';
+import Hope from './../assets/musics/Hope.mp3';
+import Sunset_C from './../assets/musics/Sunset.jpg';
+import Sunset from './../assets/musics/Sunset.mp3';
+import Saeng_You_C from './../assets/musics/Saeng_You.jpg';
+import Saeng_You from './../assets/musics/Saeng_You.mp3';
+import You_C from './../assets/musics/You.jpg';
+import You from './../assets/musics/You.mp3';
+import Ocean_Blue_C from './../assets/musics/Ocean_Blue.jpg';
+import Ocean_Blue from './../assets/musics/Ocean_Blue.mp3';
+import Distraction_C from './../assets/musics/Distraction.jpg';
+import Distraction from './../assets/musics/Distraction.mp3';
+import Secret_to_Happiness_C from './../assets/musics/Secret_to_Happiness.jpg';
+import Secret_to_Happiness from './../assets/musics/Secret_to_Happiness.mp3';
+import Hey_C from './../assets/musics/Hey.jpg';
+import Hey from './../assets/musics/Hey.mp3';
 export default function AllMusicList() {
     return [
         {
             name:"Hope",
             singer:"Mark Eliyahu",
             id:uuidv4(),
-            cover:"https://songsara.net/wp-content/uploads/2021/02/Mark-Eliyahu-Hope-400x400.jpg",
-            address:"https://dl.songsara.net/FRE/2021/2/Mark%20Eliyahu%20-%20Hope%20(2021)%20SONGSARA.NET.mp3",
+            cover:Hope_C,
+            address:Hope,
             favorite:false
         }
         ,
@@ -15,8 +31,8 @@ export default function AllMusicList() {
             name:"Sunset",
             singer:"Waimis",
             id:uuidv4(),
-            cover:"https://songsara.net/wp-content/uploads/2021/06/Waimis-Sunset-400x400.jpg",
-            address:"https://dl.songsara.net/FRE/2021/7/Waimis%20-%20Sunset%20(2020)%20SONGSARA.NET.mp3",
+            cover:Sunset_C,
+            address:Sunset,
             favorite:false
         }
         ,
@@ -24,8 +40,8 @@ export default function AllMusicList() {
             name:"Saeng You",
             singer:"DayFox",
             id:uuidv4(),
-            cover:"https://songsara.net/wp-content/uploads/2021/06/DayFox-Saeng-You-400x400.jpg",
-            address:"https://dl.songsara.net/FRE/2021/7/DayFox%20-%20Saeng%20You%20(2021)%20SONGSARA.NET.mp3",
+            cover:Saeng_You_C,
+            address:Saeng_You,
             favorite:false
         }
         ,
@@ -33,8 +49,8 @@ export default function AllMusicList() {
             name:"You",
             singer:"Approaching Nirvana",
             id:uuidv4(),
-            cover:"https://songsara.net/wp-content/uploads/2021/06/Approaching-Nirvana-You-2021-Edit-400x400.jpg",
-            address:"https://dl.songsara.net/FRE/2021/7/Approaching%20Nirvana%20-%20You%20(2021%20Edit)%20(2021)%20SONGSARA.NET.mp3",
+            cover:You_C,
+            address:You,
             favorite:false
         }
         ,
@@ -42,8 +58,8 @@ export default function AllMusicList() {
             name:"Ocean Blue",
             singer:"InRp",
             id:uuidv4(),
-            cover:"https://songsara.net/wp-content/uploads/2021/05/InRp-Ocean-Blue-400x400.jpg",
-            address:"https://dl.songsara.net/FRE/2021/6/InRp%20-%20Ocean%20Blue%20(2021)%20SONGSARA.NET.mp3",
+            cover:Ocean_Blue_C,
+            address:Ocean_Blue,
             favorite:false
         }
         ,
@@ -51,8 +67,8 @@ export default function AllMusicList() {
             name:"Distraction",
             singer:"Hossein Khezri",
             id:uuidv4(),
-            cover:"https://songsara.net/wp-content/uploads/2021/01/distraction_posterfix-400x400.jpg",
-            address:"https://dl.songsara.net/FRE/2021/1/Hossein%20Khezri%20-%20Distraction%20(2020)%20SONGSARA.NET.mp3",
+            cover:Distraction_C,
+            address:Distraction,
             favorite:false
         }
         ,
@@ -60,8 +76,8 @@ export default function AllMusicList() {
             name:"Secret to Happiness",
             singer:"Jayjen",
             id:uuidv4(),
-            cover:"https://songsara.net/wp-content/uploads/2021/05/Jayjen-Secret-to-Happiness-400x400.jpg",
-            address:"https://dl.songsara.net/FRE/2021/5/Jayjen%20-%20Secret%20to%20Happiness%20(2020)%20SONGSARA.NET.mp3",
+            cover:Secret_to_Happiness_C,
+            address:Secret_to_Happiness,
             favorite:false
         }
         ,
@@ -69,8 +85,8 @@ export default function AllMusicList() {
             name:"Hey",
             singer:"Various Artists",
             id:uuidv4(),
-            cover:"https://songsara.net/wp-content/uploads/2021/06/Hello-Hello-400x400.jpg",
-            address:"https://dl.songsara.net/FRE/2021/7/Hello%20Hello%20(Playlist)/01%20Hey.mp3",
+            cover:Hey_C,
+            address:Hey,
             favorite:false
         }
     ]
