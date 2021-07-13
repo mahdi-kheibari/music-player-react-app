@@ -50,7 +50,7 @@ const CurrentSongFav = ({ time, width, removeFromFav }) => {
                 onEnded={goNextFav}>
             </audio>
             {(width > 778) ?
-                <div className="currentSong" style={{ background: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSongFav[0].cover + ")" }}>
+                <div className="currentSong" style={{ backgroundImage: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSongFav[0].cover + ")" }}>
                     <div className="row no-gutters">
                         <div className="col-5 col-xl-3 p-0 d-flex justify-content-end">
                             <Card className="currentSong_box">
@@ -118,7 +118,7 @@ const CurrentSongFav = ({ time, width, removeFromFav }) => {
                 :
                 // Start Mobile current song fav
                 <div>
-                    <div className="currentSongMobile" style={{ background: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSongFav[0].cover + ")" }}>
+                    <div className="currentSongMobile" style={{ backgroundImage: "linear-gradient(0deg,rgba(35,53,74,0.7),rgba(35,53,74,0.85)), url(" + currentSongFav[0].cover + ")" }}>
                         <div className="row no-gutters">
                             <div className="col-11 col-sm-6 p-0 d-flex justify-content-end">
                                 <Card className="currentSongMobile_box">
