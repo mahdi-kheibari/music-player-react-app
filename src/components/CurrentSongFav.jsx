@@ -22,17 +22,21 @@ const CurrentSongFav = ({ time, width, removeFromFav }) => {
             setCurrentSongFav([favList[favList.length - 1]]);
         } else { setCurrentSongFav([favList[currentIndexFav - 1]]); }
     }
+
     useEffect(() => {
-        if (songHandlerFav) { audioRefFav.current.play(); }
-        else { audioRefFav.current.pause(); }
-        var timeFav = setInterval(() => {
-            setCurrentTime(audioRefFav.current.currentTime);
-            setFullTime(audioRefFav.current.duration);
+        const play = async () => {
+            if (songHandlerFav) { await audioRefFav.current.play(); }
+            else { await audioRefFav.current.pause(); }
+        }
+        play();
+        var timeFav = setInterval(async () => {
+            await setCurrentTime(audioRefFav.current.currentTime);
+            await setFullTime(audioRefFav.current.duration);
         }, 1000);
         return function cleanup() {
             clearInterval(timeFav);
         }
-    }, [songHandlerFav, currentSongFav])// eslint-disable-line react-hooks/exhaustive-deps
+    }, [songHandlerFav, currentSongFav]);// eslint-disable-line react-hooks/exhaustive-deps
 
     const imgRef = useRef();
     const imgBoxRef = useRef();

@@ -11,11 +11,14 @@ const CurrentSong = ({ time, setToFav, width, audioRef, goNext }) => {
     const { currentSong, setCurrentSong, songHandler, setSongHandler, currentTime, setCurrentTime, fullTime, setFullTime, songsList } = useContext(MyContext);
 
     useEffect(() => {
-        if (songHandler) { audioRef.current.play(); }
-        else { audioRef.current.pause(); }
-        var time = setInterval(() => {
-            setCurrentTime(audioRef.current.currentTime);
-            setFullTime(audioRef.current.duration);
+        const play = async () => {
+            if (songHandler) { await audioRef.current.play(); }
+            else { await audioRef.current.pause(); }
+        }
+        play();
+        var time = setInterval(async () => {
+            await setCurrentTime(audioRef.current.currentTime);
+            await setFullTime(audioRef.current.duration);
         }, 1000)
         return function cleanup() {
             clearInterval(time);
