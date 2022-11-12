@@ -17,7 +17,7 @@ const SongListItem = ({ name, cover, singer, id }) => {
 
     return (
         <Switch>
-            <Route path="/" exact>
+            <Route path="/music-player-web-app" exact>
                 <div className="songItem mx-3 mb-1" onClick={updateCurrent}>
                     <Card className="songItem_box">
                         <Card.Img className="songItem_box-img w-auto m-2" src={cover} />
@@ -28,7 +28,7 @@ const SongListItem = ({ name, cover, singer, id }) => {
                     </Card>
                 </div>
             </Route>
-            <Route path="/fav">
+            <Route path="/music-player-web-app/fav">
                 <div className="songItem mx-3 mb-1" onClick={updateCurrentFav}>
                     <Card className="songItem_box">
                         <Card.Img className="songItem_box-img w-auto m-2" src={cover} />

@@ -10,12 +10,12 @@ const SongList = () => {
             <div className="col-7 col-xl-9 offset-5 offset-xl-3">
                 <div className="songList mt-2 ml-2 d-flex">
                     <Switch>
-                        <Route path="/" exact>
+                        <Route path="/music-player-web-app" exact>
                             {songsList.map((item) => (
                                 <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />
                             ))}
                         </Route>
-                        <Route path="/fav">
+                        <Route path="/music-player-web-app/fav">
                             {favList.map((item) => (
                                 <SongListItem key={item.id} name={item.name} singer={item.singer} cover={item.cover} id={item.id} />
                             ))}
