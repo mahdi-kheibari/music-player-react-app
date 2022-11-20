@@ -1,5 +1,5 @@
 > view project on this link:
-https://mahdi-kheibari.github.io/music-player-web-app/
+https://mahdi-kheibari.github.io/music-player-react-app/
 
 # Getting Started with Create React App
 

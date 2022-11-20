@@ -8,8 +8,8 @@ const Header = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <NavLink to="/music-player-web-app" exact activeClassName="active" className="nav-link">All songs</NavLink>
-                    <NavLink to="/music-player-web-app/fav" className="nav-link">Favorite songs</NavLink>
+                    <NavLink to="/music-player-react-app" exact activeClassName="active" className="nav-link">All songs</NavLink>
+                    <NavLink to="/music-player-react-app/fav" className="nav-link">Favorite songs</NavLink>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

@@ -103,7 +103,7 @@ function AppLayout() {
     <>
       <Header />
       <Switch>
-        <Route path="/music-player-web-app" exact>
+        <Route path="/music-player-react-app" exact>
           <audio
             src={currentSong[0].address}
             ref={audioRef}
@@ -116,7 +116,7 @@ function AppLayout() {
           </CurrentSong>
 
         </Route>
-        <Route path="/music-player-web-app/fav" exact>
+        <Route path="/music-player-react-app/fav" exact>
           {(currentSongFav[0] !== undefined) ?
             <CurrentSongFav time={time}
               width={width} removeFromFav={removeFromFav}
